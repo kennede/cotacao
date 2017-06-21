@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cotação de Moeda</title>
+    <link href='http://fonts.googleapis.com/css?family=OpenSans:300,400,700' rel='stylesheet' type='text/css' />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/style.css" rel="stylesheet" />
+    
+</head>
+<body>
+
+	<div class="container" >
+		
+		<div id="resultaDaCotacao">
+		
+		    <table class="table table-hover" title="Resultado da Cotação">
+				<thead>
+		        <tr th:each="r : ${resultado}"> 
+ 		            <td>Conversão de: <span th:text="${r.de}"></span> </td> 
+ 		            <td >Para: <span th:text="${r.para}"></span> </td> 
+ 		        </tr>
+		        </thead>
+	
+		        <thead>
+		        <tr th:each="r : ${resultado}"> 
+ 		            <td>Valor a converter: <span th:text="${r.converterValor}"></span> </td> 
+ 		            <td>Resultado da conversão: <span th:text="${r.resultadoValor}"></span> </td> 
+ 		        </tr>
+		        </thead>
+		    </table>
+		 </div>
+    <hr/>
+		<form action="cotar" method="post">
+		    <!-- 
+		    <div class="form-group">
+		        <label for="nome">Nome Completo</label> 
+		        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"></input>
+			</div>
+		    <div class="form-group">
+		        <label for="email">E-mail</label> 
+		        <input type="email" class="form-control" id="email" name="email" placeholder="Email"></input>
+		    </div>
+		    <div class="form-group">
+		        <label for="telefone">Telefone</label> 
+		        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone"></input>
+		    </div>
+		    -->
+		    
+	    <div class="form-group">
+	    	<div class="row">
+	    		<div class="col-md-3">
+		         	<label id="cotacao-label" for="cotacoesDe" > Moeda De:</label>
+		    	     <select id="cotacaoDe" name="cotacaoDe" size="5" multiple="multiple" >
+		        	    <option th:each="cotacao : ${cotacoes}" th:value="${cotacao.sigla}" th:text="${cotacao.nome}"></option>
+			        </select>
+			    </div>
+			    
+			    <div class="col-md-3">
+			    	<label id="cotacao-label" for="cotacoesPara" > Moeda Para:</label>
+			         <select id="cotacaoPara" name="cotacaoPara" size="5" multiple="multiple" >
+			            <option th:each="cotacao : ${cotacoes}" th:value="${cotacao.sigla}" th:text="${cotacao.nome}"></option>
+			        </select>     
+	        	</div>    
+		    </div>    
+        </div>
+
+		    <div class="form-group">
+		    	<div class="row">
+		    		<div class="col-md-3">
+				        <label for="valor">Valor</label> 
+				        <input type="text" class="form-control" id="valorCotacao" name="valorCotacao" placeholder="Valor"></input>
+				    </div>
+				    <div class="col-md-3">
+				        <label for="valor">Data da Cotação</label> 
+				        <input type="datetime" class="form-control" id="datepicker1" name="dataCotacao" placeholder="Data da Cotação"></input>
+				    </div>    
+			    </div>    
+		    </div>
+		    
+		    <button type="submit" class="btn btn-success">Cotar</button>
+		</form>
+</div>    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="bootstrap/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.zebra-datepicker.js"></script>
+
+</body>
+</html>

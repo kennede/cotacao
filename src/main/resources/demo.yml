@@ -1,0 +1,13 @@
+# Spring properties
+spring:
+  application:
+    name: cotacao
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:./db/cotacao;MODE=PostgreSQL;IGNORECASE=TRUE
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      
+# Server
+server.port: 8080
