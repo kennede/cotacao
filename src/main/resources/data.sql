@@ -1,0 +1,1 @@
+insert into moeda (cod_moeda, nome, sigla, tipo) values (790, 'REAL BRASIL', 'BRL', 'A');
